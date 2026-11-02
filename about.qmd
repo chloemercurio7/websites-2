@@ -3,3 +3,5 @@ title: "About"
 ---
 
 ## About Me
+
+My name is Chloe Mercurio and I graduated from Monarch Highschool.
