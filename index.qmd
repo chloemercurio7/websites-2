@@ -1,3 +1,8 @@
 ---
 title: "Billboard Graphic"
 ---
+
+```{r}
+#| message: false
+library(tidyverse)
+```
