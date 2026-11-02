@@ -20,3 +20,5 @@ top_tracks <- billboard_long |>
 top_songs <- billboard_long |>
   semi_join(top_tracks, by = c("track", "artist")) |>
   mutate(song = paste(track, artist, sep = " — "))
+
+write_rds(top_songs, file = "clean_data.rds")
