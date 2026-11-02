@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Billboard Graphic",
+    "section": "",
+    "text": "library(tidyverse)\n\n\ndata(\"billboard\", package = \"tidyr\")\n\nbillboard_long &lt;- billboard |&gt;\n  pivot_longer(\n    cols = starts_with(\"wk\"),\n    names_to = \"week\",\n    names_prefix = \"wk\",\n    values_to = \"rank\"\n  ) |&gt;\n  filter(!is.na(rank)) |&gt;\n  mutate(week = as.integer(week))\n\ntop_tracks &lt;- billboard_long |&gt;\n  count(track, artist, name = \"weeks_on_chart\") |&gt;\n  slice_max(weeks_on_chart, n = 8, with_ties = FALSE) |&gt;\n  mutate(song = paste(track, artist, sep = \" — \"))\n\nbillboard_top &lt;- billboard_long |&gt;\n  semi_join(top_tracks, by = c(\"track\", \"artist\")) |&gt;\n  mutate(song = paste(track, artist, sep = \" — \"))\n\nggplot(billboard_top, aes(x = week, y = rank)) +\n  geom_line(color = \"#287271\", linewidth = 1) +\n  geom_point(\n    data = \\(data) filter(data, rank == 1),\n    color = \"#E76F51\",\n    size = 2.5\n  ) +\n  facet_wrap(vars(song), ncol = 2) +\n  scale_y_reverse(breaks = seq(10, 100, by = 10)) +\n  labs(\n    title = \"The Long Haul: Billboard Hot 100\",\n    subtitle = \"Weekly rank for the eight longest-charting songs in the dataset\",\n    x = \"Week on the chart\",\n    y = \"Billboard rank (1 = highest)\",\n    caption = \"Each line follows one song; orange dots mark weeks it reached No. 1.\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(\n    plot.title = element_text(face = \"bold\"),\n    strip.text = element_text(face = \"bold\"),\n    panel.grid.minor = element_blank()\n  )"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
