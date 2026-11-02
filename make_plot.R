@@ -25,4 +25,4 @@ billboard_plot <- ggplot(top_songs, aes(x = week, y = rank)) +
     panel.grid.minor = element_blank()
   )
 
-ggsave("billboard_plot.png", plot = billboard_plot)
+ggsave("billboard.png", plot = billboard_plot)
