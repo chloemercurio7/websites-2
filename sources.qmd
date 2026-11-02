@@ -1,8 +1,0 @@
----
-title: "Sources"
-format: html
----
-
-An overview of sources used in my project.
-
-These are my sources. Here are some challenges. Quarto websites are awesome.
